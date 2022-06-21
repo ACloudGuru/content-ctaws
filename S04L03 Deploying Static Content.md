@@ -3,7 +3,7 @@
 ## Clone the Frontend Code in CloudShell
 Open a CloudShell instance by searching for and navigating to the CloudShell service in the AWS management console.
 
-Once the instance is ready, use it to clone the GitHub repo for the app.
+Once the instance is ready, use it to clone the GitHub repo for the app. You can skip this if you already did it in a previous lesson.
 
 ```
 git clone https://github.com/ACloudGuru/ctaws-plant-shop.git

@@ -9,7 +9,7 @@ Click `Create function`, and create a lambda function with the following setting
 - Function name: `PlantShopAPI`
 - Runtime: `Node.js`
 
-Under `Advantced Settings`:
+Under `Advanced Settings`:
 - Check `Enable function URL`
 - Auth type `NONE`
 - Check `Configure cross-origin resource sharing (CORS)`
@@ -21,18 +21,12 @@ Under `Advantced Settings`:
 Click `Create function`.
 
 ## Package the Code
-
-To deploy the code as a Lambda function, you will need to make alterations to the code. Check the git repository for the original code, as well an example of the code prepared to be used as a Lambda function.
-
-Original server code: https://github.com/ACloudGuru/ctaws-plant-shop/blob/main/api/server.js
-Lambda version: https://github.com/ACloudGuru/ctaws-plant-shop/blob/main/api/lambda/index.js
-
-If you wish to build a zip file to deploy the code yourself, you can do so from your local machine or any Linux environment. Clone the repository from GitHub and create the zip.
+From your CloudShell environment, package and deploy the code.
 
 ```
-git clone https://github.com/ACloudGuru/ctaws-plant-shop.git
+cd api/lambda
 
-cd ctaws-plant-shop/api/lambda
+npm install
 
 zip -r lambda.zip .
 ```
@@ -42,11 +36,17 @@ This should create a file called `lambda.zip`. However, if you wish to skip buil
 https://github.com/ACloudGuru/ctaws-plant-shop/releases/download/v0.0.1/lambda.zip
 
 ## Deploy the Code
-In the AWS Management console for your Lambda function, click `Upload from` > `.zip file`.
+From the CloudShell instance, use the `aws` cli to deploy the Lambda code.
 
-Select `Upload` and choose the `lambda.zip` file you just created. Then click `Save`.
+```
+aws lambda update-function-code \
+    --function-name PlantShopAPI \
+    --zip-file fileb://lambda.zip
+```
 
 ## Set Up Environment Variables
+Go back to the Lambda function in the AWS management console.
+
 Before we can test the function, we need to add the MySQL connection info to the function's environment variables.
 
 Click `Configuration` > `Environment variables` > `Edit`.

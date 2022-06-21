@@ -3,9 +3,11 @@
 ## Get a Copy of the Code
 The Plant Shop code can be found in GitHub at https://github.com/ACloudGuru/ctaws-plant-shop. Feel free to make your own fork of the project!
 
-You can work with the code on your own machine, or directly via GitHub (if you make your own fork).
+Log into the AWS management console, then search for and navigate to the CloudShell service.
 
-Get a copy of the source code on your machine like this:
+If you wish, you can also work with the code on your own machine, or directly via GitHub (if you make your own fork).
+
+Get a copy of the source code:
 
 ```
 git clone https://github.com/ACloudGuru/ctaws-plant-shop.git
@@ -17,6 +19,14 @@ If you want to see an example of how it should look at the end, a Lambda-ready v
 
 ## Modify the Code
 The main change is to remove the built-in express web server and run the code in an event handler instead. Lambda has no need of a built-in web server, as it will handle all web request functionality. Instead, Lambda will pass an "event" to our code, and our code needs to be set up to process the event.
+
+```
+cd ctaws-plant-shop
+
+cp api/server.js api/lambda/index.js
+
+vi api/lambda/index.js
+```
 
 We can set up an event handler with `exports.handler`. The final version could look something like this:
 
