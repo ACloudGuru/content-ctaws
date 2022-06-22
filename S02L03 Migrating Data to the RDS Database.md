@@ -75,12 +75,14 @@ mysql --host=<Endpoint URL> -u admin -p -e \
 grant select on plantshop.items to plantshop;'
 ```
 
+### Test it
 Test the service account and verify that the migrated data is present in the database. You will need to enter the password for the `plantshop` account.
 
 ```
 mysql --host=<Endpoint URL> -u plantshop -p -e 'select * from plantshop.items'
 ```
 
+### Delete the Temporary Security Group Access
 Return to the inbound rules for the security group and select `Edit inbound rules` again.
 
 `Delete` the rule you added earlier for the CloudShell IP address, the click `Save rules`.
